@@ -21,7 +21,7 @@ The transactions will be saved in a file, using a CSV format to record the data.
 
 - The application should store a history of transactions in a SINGLE List<Transaction>. Your task is to design the Transaction class to support both checking and savings as well as deposits and withdraws.
 - - Make a Transaction class
-- - Create a Method for checking
+- - Create a Method for checking.
 - - Create a Method for savings
 - - Create a Method for deposits
 - - Create a Method for withdrawals
