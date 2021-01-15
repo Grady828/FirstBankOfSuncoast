@@ -33,11 +33,18 @@ Create a “Welcome” and “Goodbye” message!
 
 Create a Class called Transaction
 
+| Type     | Account  | Amount |
+| -------- | -------- | ------ |
+| Deposit  | Savings  | 20     |
+| Deposit  | Savings  | 2000   |
+| Deposit  | Checking | 3000   |
+| Withdraw | Checking | 42     |
+
 Properties:  
 Amount (int): (how much is in the transaction)
-Kind of Transactions: Deposit, Withdraw
+Type: Deposit, Withdraw
 TimeStamp (DateTime) (Could add a time stamp on your transactions as well.)
-Where the transaction is going: Checking, Savings,
+Account: Checking, Savings,
 
 Add a List<Transactions>
 
@@ -56,9 +63,22 @@ Instead of If Statements, you can use Switch Statements
 
 Algorithm
 Welcome to the app
-Add a Class: Transaction
+Add a Class Transaction
+Property: Type (String: “Deposit” or “Withdraw”)
+Property:Account (String: “Savings” or “Checking”)
+Property:Amount (Int: Can be any number-->This is just how much you will want to withdraw or deposit)
 App Should load past transactions from a file when it first starts (fileReader)
 While the User hasn’t chosen to QUIT: (Bool is false)
+
+Add a List<Transactions>
+Var newtransaction = new Transaction()
+{
+Account = “Savings”,
+Type = “Deposit”,
+Amount = 45,
+TimeStamp = DateTime.Now,
+};
+transaction.Add(newtransaction);
 
 Display the Menu Options:
 Deposit
@@ -71,23 +91,25 @@ Ask the user what they would like to choose?
 switch (choice)
 {
 
-case “Deposit”:
-Ask the user if they would like to choose Savings or Checking?
-Console writeLine
-Console readLine of answer
+case “Deposit”(Like Add in Dino) (if (userChoice==Deposit) ADD))
+Ask the user "Do you want to deposit into Savings or Checking?"
+Console readLine of answer as 'whereDepositIsGoing'= Account ( --var newAccount=Answer (savings or checkings))
+Ask $"How much they want to input into {answer}"
+Console readline of answer and parse into int as 'amountOfDeposit' = Amount (--var newAmount= answer (How much))
+create a new Transaction object, filling in these properties
+var newtransaction= new Transaction() - Amount = amountOfDeposit ( newtransaction.Amount=newAmount) - KindOfTransaction = "Deposit" ( --var newType=deposit (deposit or withdraw) - TimeStamp - fill in with the current time = DateTime.Now - WhereGoing = whereDepositIsGoing = Account ( newtransaction.Account=newAccount)
+Add that new transaction our `List`
 
-    If (Savings)
-    Ask how much they want to input into savings?
+transaction.Add(newtransaction)
 
-    If (Checking)
-    Ask how much they want to input into Checking?
     Write all the transactions to the file (the four lines of code for the fileWriter)
-    break;
+    Break; “”
 
 case “Withdraw”:
 Ask the user if they would like to choose Savings or Checking?
 If (Savings)
 Ask how much they want to withdraw from savings?
+-Find savings
 If there is enough money in account
 Remove money from savings
 Write all the transactions to the file (the four lines of code for the fileWriter)
