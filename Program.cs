@@ -1,6 +1,7 @@
 ﻿using System;
 using FirstBankOfSuncoast.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace FirstBankOfSuncoast
 {
@@ -32,6 +33,20 @@ namespace FirstBankOfSuncoast
 
 
                 // Add a List<Transactions>
+                var Transactions = new List<Transaction>(){
+                      new Transaction()
+                      {
+                        Account = "Savings",
+                        Type = "Deposit",
+                        Amount = 45,
+                        TimeStamp = DateTime.Now,
+                      },
+                      new Transaction()
+                {
+                        Account = "Checking",
+
+                      },
+            };
                 // Var newtransaction = new Transaction()
                 // {
                 // Account = “Savings”,
