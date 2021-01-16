@@ -32,7 +32,7 @@ namespace FirstBankOfSuncoast
 
 
             // Add a List<Transactions>
-            var Transactions = new List<Transaction>() {
+            var transactions = new List<Transaction>() {
                       new Transaction()
 
                       {
@@ -92,12 +92,36 @@ namespace FirstBankOfSuncoast
                 {
                     Console.WriteLine("Deposit into Savings or Checking? ");
                     var newAccount = Console.ReadLine();
+                    Console.WriteLine("How much would you like to Deposit? ");
+                    var newAmount = int.Parse(Console.ReadLine());
 
+                    var newtransaction = new Transaction()
+                    {
+                        Account = newAccount,
+                        Amount = newAmount,
+                        Type = "deposit",
+                    };
+                    transactions.Add(newtransaction);
+                }
+                else if (choice == "withdrawal")
+                {
 
+                    Console.WriteLine("Withdraw from Savings or Checking? ");
+                    var newAccount = Console.ReadLine();
+                    Console.WriteLine("How much would you like to Withdraw? ");
+                    var newAmount = int.Parse(Console.ReadLine());
 
+                    var newtransaction = new Transaction()
+                    {
+                        Account = newAccount,
+                        Amount = newAmount,
+                        Type = "withdrawal",
+                    };
+                    transactions.Add(newtransaction);
                 }
 
 
+                // write transaction to file
             }
         }
     }
