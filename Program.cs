@@ -26,99 +26,201 @@ namespace FirstBankOfSuncoast
             // Add filereader later after testing
             // While the User hasn’t chosen to QUIT: (Bool is false)
 
-            var userHasNotChosenToQuit = false;
-            while (userHasNotChosenToQuit == false)
-            {
 
 
 
-                // Add a List<Transactions>
-                var Transactions = new List<Transaction>(){
+
+
+            // Add a List<Transactions>
+            var Transactions = new List<Transaction>() {
                       new Transaction()
+
                       {
                         Account = "Savings",
                         Type = "Deposit",
-                        Amount = 45,
+                        Amount = 50,
+                        TimeStamp = DateTime.Now,
+
+                      },
+                      new Transaction()
+                     {
+                        Account = "Checking",
+                        Type = "Deposit",
+                        Amount = 10,
                         TimeStamp = DateTime.Now,
                       },
                       new Transaction()
-                {
-                        Account = "Checking",
-
+                      {
+                        Account = "Savings",
+                        Type = "Withdrawal",
+                        Amount = 5,
+                        TimeStamp = DateTime.Now,
                       },
-            };
-                // Var newtransaction = new Transaction()
-                // {
-                // Account = “Savings”,
-                // Type = “Deposit”,
-                // Amount = 45,
-                // TimeStamp = DateTime.Now,
-                // };
-                // transaction.Add(newtransaction);
-
+                       new Transaction()
+                      {
+                        Account = "Checking",
+                        Type = "Withdrawal",
+                        Amount = 5,
+                        TimeStamp = DateTime.Now
+                      }
+                };
+            var userHasNotChosenToQuit = false;
+            while (userHasNotChosenToQuit == false)
+            {
                 // Display the Menu Options:
-                // Deposit
-                // Withdraw
-                // Balance - int
-                // Transaction History -
-                // Quit
-                // Ask the user what they would like to choose?
+                // 	Deposit
+                // 	Withdraw
+                // 	Balance 
+                // 	Transaction History
+                // 	Quit
 
-                // switch (choice)
-                // {
+                Console.WriteLine();
+                Console.WriteLine("Hi, please choose from the following options:");
+                Console.WriteLine();
+                Console.WriteLine("Deposit");
+                Console.WriteLine("Withdrawal");
+                Console.WriteLine("Balance");
+                Console.WriteLine("Transaction History");
+                Console.WriteLine("Quit");
+                Console.WriteLine();
+                Console.WriteLine("Please make a choice");
+                var choice = Console.ReadLine();
+                string v = choice.ToLower().Trim();
+                choice = v;
 
-                // case “Deposit”(Like Add in Dino) (if (userChoice==Deposit) ADD))
-                // Ask the user "Do you want to deposit into Savings or Checking?"
-                // Console readLine of answer as 'whereDepositIsGoing'= Account ( --var newAccount=Answer (savings or checkings))
-                // Ask $"How much they want to input into {answer}"
-                // Console readline of answer and parse into int as 'amountOfDeposit' = Amount (--var newAmount= answer (How much))
-                // create a new Transaction object, filling in these properties
-                // var newtransaction= new Transaction() - Amount = amountOfDeposit ( newtransaction.Amount=newAmount) - KindOfTransaction = "Deposit" ( --var newType=deposit (deposit or withdraw) - TimeStamp - fill in with the current time = DateTime.Now - WhereGoing = whereDepositIsGoing = Account ( newtransaction.Account=newAccount)
-                // Add that new transaction our `List`
+                if (choice == "deposit")
+                {
+                    Console.WriteLine("Deposit into Savings or Checking? ");
+                    var newAccount = Console.ReadLine();
 
-                // transaction.Add(newtransaction)
 
-                //     Write all the transactions to the file (the four lines of code for the fileWriter)
-                //     Break; “”
 
-                // case “Withdraw”:
-                // Ask the user if they would like to choose Savings or Checking?
-                // If (Savings)
-                // Ask how much they want to withdraw from savings?
-                // -Find savings
-                // If there is enough money in account
-                // Remove money from savings
-                // Write all the transactions to the file (the four lines of code for the fileWriter)
-                // If there isn’t enough money
-                // Do not remove money from savings
-                // If (Checking)
-                // Ask how much they want to withdraw from checking?
-                // If there is enough money in account
-                // Remove money from savings
-                // Write all the transactions to the file (the four lines of code for the fileWriter)
-                // If there isn’t
-                // Do not remove money from savings
+                }
 
-                // If (Transaction History)
-                // Ask the user if they would like to choose Savings or Checking?
-                // If (Savings)
-                // Print out the Transaction History for Savings
-                // If (Checking)
-                // Print out the Transaction History for Checking
 
-                // If (Balance)
-                // Ask the user if they would like to choose Savings or Checking?
-                // If (Savings)
-                // See the Balance of the Savings
-                // If (Checking)
-                // See the Balance of the Checking
-
-                // If (Quit)
-                // Bool is True
             }
-            // 11. Say Goodbye */
-
-
         }
     }
 }
+
+
+
+
+
+
+
+
+
+// switch (choice)
+// {
+
+// If (choice == “DEPOSIT”
+// case “Deposit” (if (userChoice==Deposit) ADD))
+// {
+// Ask the user "Do you want to deposit into Savings or Checking?"
+// Console.Write(“Do you want to deposit into Savings or Checking?” );
+// Console.Write(“Ask the user what they would like to choose? “);
+// var newAccount = Console.ReadLine(); (This Should store what they choose)
+
+// Ask $"How much they want to input into {answer}" 
+// Console.Write($"How much they want to input into {newAccount}? “}
+// var newAmount = int.Parse(Console.ReadLine()); (This will store what their amount is. The int.Parse is changing the string to an int) 
+
+// *Time to create a new instance(object) of Transaction*
+
+// var newtransaction= new Transaction()
+//       - Amount = amountOfDeposit ( newtransaction.Amount=newAmount)
+//       - KindOfTransaction = "Deposit" ( newtransaction.Type=”Deposit” (deposit or withdraw))
+//       - TimeStamp ( fill in with the current time = DateTime.Now)
+//       - WhereGoing = whereDepositIsGoing (newtransaction.Account=newAccount)
+
+// transaction.Add(newtransaction)
+
+//     *Write all the transactions to the file (the four lines of code for the fileWriter)
+//     Break; “” *
+
+// case “Withdraw”:
+// 	Ask the user if they would like to choose Savings or Checking?
+
+// If (Savings)
+// Find.Savings 
+// inside Where savings variable-- Where.Deposit and Where.Withdraw 
+// Sum of the totals of the Deposit amount and then the Sum of the totals of the Withdraw   amount
+// Subtract Withdraw Amount from the Deposit Amount (Store in variable) **We will Use this variable**
+// Ask how much they want to withdraw from savings?
+// Store Console.ReadLine in variable
+// If (Star variable<Asking Variable)
+// {
+// 	Console.WriteLine (NO FUNDS!)
+// }
+
+// If(Star variable>Asking Variable)
+// { 
+// var newtransaction= new Transaction()
+//       - Amount = amountOfWithdraw( newtransaction.Amount=newAmount)
+//       - KindOfTransaction = "Withdraw" ( newtransaction.Type=”Withdraw” (deposit or withdraw))
+//       - TimeStamp ( fill in with the current time = DateTime.Now)
+//       - WhereGoing = whereWithdrawIsGoing (newtransaction.Account=newAccount)
+
+// transaction.Add(newtransaction)
+// }
+
+
+// 	If (Checking)
+// Where.Checking
+// inside where checking variable-- Where.Deposit and Where.Withdraw 
+// Sum of the totals of the Deposit amount and then the Sum of the totals of the Withdraw   amount
+// Subtract Withdraw Amount from the Deposit Amount (Store in variable) **We will Use this variable**
+// Ask how much they want to withdraw from checking?
+// Store Console.ReadLine in variable
+// If (Star variable<Asking Variable)
+// {
+// 	Console.WriteLine (NO FUNDS!)
+// }
+
+// If(Star variable>Asking Variable)
+// { 
+// var newtransaction= new Transaction()
+//       - Amount = amountOfWithdraw( newtransaction.Amount=newAmount)
+//       - KindOfTransaction = "Withdraw" ( newtransaction.Type=”Withdraw” (deposit or withdraw))
+//       - TimeStamp ( fill in with the current time = DateTime.Now)
+//       - WhereGoing = whereWithdrawIsGoing (newtransaction.Account=newAccount)
+
+// transaction.Add(newtransaction)
+// }
+
+
+// If (Transaction History)
+// 	Ask the user if they would like to choose Savings or Checking?
+// 	If (Savings)
+// 	Use Where function to filter out the Account by Savings 
+// 	Foreach (var save in savings)
+// 	{
+// 	Print out: Your Transaction History for Savings
+// 	}
+// 	If (Checking)
+// 	Use Where function to filter out the Account by Checking
+// 	Foreach (var check in checking)
+// 	{
+// 	Print out: Your Transaction History for Checking
+// 	}
+
+// If (Balance)
+// 	Ask the user if they would like to choose Savings or Checking?
+// If (Savings) 
+// Where is Savings 
+// Use where you have savings variable-- Where.Deposit and Where.Withdraw 
+// Sum of the totals of the Deposit amount and then the Sum of the totals of the Withdraw   amount
+// Subtract Withdraw Amount from the Deposit Amount (Store in variable)
+// Console WriteLine the Variable amount stated above
+// If (Checking)
+// Where  is Checking 
+// use Where you have checking variable-- Where.Deposit and Where.Withdraw 
+// Sum of the totals of the Deposit amount and then the Sum of the totals of the Withdraw   amount
+// Subtract Withdraw Amount from the Deposit Amount (Store in variable)
+// Console WriteLine the Variable amount stated above
+
+// If (Quit)
+// 	Bool is True
+
+// 11. Say Goodbye
