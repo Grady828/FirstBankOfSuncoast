@@ -169,6 +169,18 @@ namespace FirstBankOfSuncoast
 
                     Console.WriteLine($"The balances of all of your checking is {checkingAccountBalance} and savings is {savingsAccountBalance} ");
                 }
+                else if (choice == "transaction history")
+                {
+                    Console.WriteLine("Which accounts transaction history would you like? ");
+                    var accountToView = Console.ReadLine().ToLower().Trim();
+                    var transactionsToView = transactions.Where(transaction => transaction.Account == accountToView);
+                    foreach (var transaction in transactionsToView)
+                    {
+                        Console.WriteLine($"This {accountToView} account transaction is a ${transaction.Amount} {transaction.Type} ");
+                    }
+
+                }
+
 
 
                 // write transaction to file
