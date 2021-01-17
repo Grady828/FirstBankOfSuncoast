@@ -138,21 +138,41 @@ namespace FirstBankOfSuncoast
                     var newAccount = Console.ReadLine().ToLower().Trim();
                     Console.WriteLine("How much would you like to Withdraw? ");
                     var newAmount = int.Parse(Console.ReadLine());
-
-                    var newtransaction = new Transaction()
+                    if (newAccount == "checking" && newAmount < checkingAccountBalance)
                     {
-                        Account = newAccount,
-                        Amount = newAmount,
-                        Type = "withdrawal",
-                    };
-                    transactions.Add(newtransaction);
+                        var newtransaction = new Transaction()
+                        {
+                            Account = newAccount,
+                            Amount = newAmount,
+                            Type = "withdrawal",
+                        };
+                        transactions.Add(newtransaction);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Insufficient Funds");
+
+                    }
+                    if (newAccount == "savings" && newAmount < savingsAccountBalance)
+                    {
+                        var newtransaction = new Transaction()
+                        {
+                            Account = newAccount,
+                            Amount = newAmount,
+                            Type = "withdrawal",
+                        };
+                        transactions.Add(newtransaction);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Insufficient Funds");
+
+                    }
                 }
                 else if (choice == "balance")
                 {
 
-                    Console.WriteLine("The balances of all of your accounts is =  ");
-
-
+                    Console.WriteLine($"The balances of all of your checking is {checkingAccountBalance} and savings is {savingsAccountBalance} ");
                 }
 
 
