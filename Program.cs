@@ -2,6 +2,10 @@
 using FirstBankOfSuncoast.Models;
 using System.Linq;
 using System.Collections.Generic;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
+using System.Transactions;
 
 namespace FirstBankOfSuncoast
 {
@@ -17,42 +21,19 @@ namespace FirstBankOfSuncoast
     {
         static void Main(string[] args)
         {
+            var fileReader = new StreamReader("transactions.csv");
+            var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+            var transactions = csvReader.GetRecords<Transaction>().ToList();
+            fileReader.Close();
+
+
+
+
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Welcome to First Bank OF Suncoast");
             Console.WriteLine();
-            var transactions = new List<Transaction>() {
-                      new Transaction()
 
-                      {
-                        Account = "savings",
-                        Type = "deposit",
-                        Amount = 50,
-                        TimeStamp = DateTime.Now,
-
-                      },
-                      new Transaction()
-                     {
-                        Account = "checking",
-                        Type = "deposit",
-                        Amount = 10,
-                        TimeStamp = DateTime.Now,
-                      },
-                      new Transaction()
-                      {
-                        Account = "savings",
-                        Type = "withdrawal",
-                        Amount = 5,
-                        TimeStamp = DateTime.Now,
-                      },
-                       new Transaction()
-                      {
-                        Account = "checking",
-                        Type = "withdrawal",
-                        Amount = 5,
-                        TimeStamp = DateTime.Now
-                      }
-                };
             var userHasNotChosenToQuit = false;
             while (userHasNotChosenToQuit == false)
             {
@@ -109,8 +90,13 @@ namespace FirstBankOfSuncoast
                         Account = newAccount,
                         Amount = newAmount,
                         Type = "deposit",
+                        TimeStamp = DateTime.Now,
                     };
                     transactions.Add(newtransaction);
+                    var fileWriter = new StreamWriter("transactions.csv");
+                    var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+                    csvWriter.WriteRecords(transactions);
+                    fileWriter.Close();
                 }
                 else if (choice == "withdrawal")
                 {
@@ -126,8 +112,13 @@ namespace FirstBankOfSuncoast
                             Account = newAccount,
                             Amount = newAmount,
                             Type = "withdrawal",
+                            TimeStamp = DateTime.Now,
                         };
                         transactions.Add(newtransaction);
+                        var fileWriter = new StreamWriter("transactions.csv");
+                        var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+                        csvWriter.WriteRecords(transactions);
+                        fileWriter.Close();
                     }
                     else if (newAccount == "savings" && newAmount < savingsAccountBalance)
                     {
@@ -136,8 +127,14 @@ namespace FirstBankOfSuncoast
                             Account = newAccount,
                             Amount = newAmount,
                             Type = "withdrawal",
+                            TimeStamp = DateTime.Now,
                         };
                         transactions.Add(newtransaction);
+                        var fileWriter = new StreamWriter("transactions.csv");
+                        var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+                        csvWriter.WriteRecords(transactions);
+                        fileWriter.Close();
+
                     }
                     else
                     {
@@ -161,7 +158,13 @@ namespace FirstBankOfSuncoast
                     }
 
                 }
+                else if (choice == "quit")
+                {
+                    userHasNotChosenToQuit = true;
+                }
+
             }
+
         }
     }
 }
