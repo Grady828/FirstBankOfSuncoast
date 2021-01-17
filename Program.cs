@@ -36,30 +36,30 @@ namespace FirstBankOfSuncoast
                       new Transaction()
 
                       {
-                        Account = "Savings",
-                        Type = "Deposit",
+                        Account = "savings",
+                        Type = "deposit",
                         Amount = 50,
                         TimeStamp = DateTime.Now,
 
                       },
                       new Transaction()
                      {
-                        Account = "Checking",
-                        Type = "Deposit",
+                        Account = "checking",
+                        Type = "deposit",
                         Amount = 10,
                         TimeStamp = DateTime.Now,
                       },
                       new Transaction()
                       {
-                        Account = "Savings",
-                        Type = "Withdrawal",
+                        Account = "savings",
+                        Type = "withdrawal",
                         Amount = 5,
                         TimeStamp = DateTime.Now,
                       },
                        new Transaction()
                       {
-                        Account = "Checking",
-                        Type = "Withdrawal",
+                        Account = "checking",
+                        Type = "withdrawal",
                         Amount = 5,
                         TimeStamp = DateTime.Now
                       }
@@ -88,10 +88,38 @@ namespace FirstBankOfSuncoast
                 string v = choice.ToLower().Trim();
                 choice = v;
 
+                var savingsAccountBalance = 0;
+                var checkingAccountBalance = 0;
+                var savingsTransactions = transactions.Where(transaction => transaction.Account == "savings");
+                var checkingTransactions = transactions.Where(transaction => transaction.Account == "checking");
+                foreach (var savingsTransaction in savingsTransactions)
+                {
+                    if (savingsTransaction.Type == "deposit")
+                    {
+                        savingsAccountBalance = savingsAccountBalance + savingsTransaction.Amount;
+                    }
+                    else
+                    {
+                        savingsAccountBalance = savingsAccountBalance - savingsTransaction.Amount;
+                    }
+                }
+                foreach (var checkingTransaction in checkingTransactions)
+                {
+                    if (checkingTransaction.Type == "deposit")
+                    {
+                        checkingAccountBalance = checkingAccountBalance + checkingTransaction.Amount;
+                    }
+                    else
+                    {
+                        checkingAccountBalance = checkingAccountBalance - checkingTransaction.Amount;
+                    }
+                }
+
+
                 if (choice == "deposit")
                 {
                     Console.WriteLine("Deposit into Savings or Checking? ");
-                    var newAccount = Console.ReadLine();
+                    var newAccount = Console.ReadLine().ToLower().Trim();
                     Console.WriteLine("How much would you like to Deposit? ");
                     var newAmount = int.Parse(Console.ReadLine());
 
@@ -107,7 +135,7 @@ namespace FirstBankOfSuncoast
                 {
 
                     Console.WriteLine("Withdraw from Savings or Checking? ");
-                    var newAccount = Console.ReadLine();
+                    var newAccount = Console.ReadLine().ToLower().Trim();
                     Console.WriteLine("How much would you like to Withdraw? ");
                     var newAmount = int.Parse(Console.ReadLine());
 
@@ -118,6 +146,13 @@ namespace FirstBankOfSuncoast
                         Type = "withdrawal",
                     };
                     transactions.Add(newtransaction);
+                }
+                else if (choice == "balance")
+                {
+
+                    Console.WriteLine("The balances of all of your accounts is =  ");
+
+
                 }
 
 
