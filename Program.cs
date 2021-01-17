@@ -17,21 +17,10 @@ namespace FirstBankOfSuncoast
     {
         static void Main(string[] args)
         {
-            // Welcome to the app
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("Welcome to First Bank OF Suncoast");
             Console.WriteLine();
-
-            // Add filereader later after testing
-            // While the User hasn’t chosen to QUIT: (Bool is false)
-
-
-
-
-
-
-            // Add a List<Transactions>
             var transactions = new List<Transaction>() {
                       new Transaction()
 
@@ -67,12 +56,6 @@ namespace FirstBankOfSuncoast
             var userHasNotChosenToQuit = false;
             while (userHasNotChosenToQuit == false)
             {
-                // Display the Menu Options:
-                // 	Deposit
-                // 	Withdraw
-                // 	Balance 
-                // 	Transaction History
-                // 	Quit
 
                 Console.WriteLine();
                 Console.WriteLine("Hi, please choose from the following options:");
@@ -114,8 +97,6 @@ namespace FirstBankOfSuncoast
                         checkingAccountBalance = checkingAccountBalance - checkingTransaction.Amount;
                     }
                 }
-
-
                 if (choice == "deposit")
                 {
                     Console.WriteLine("Deposit into Savings or Checking? ");
@@ -180,10 +161,6 @@ namespace FirstBankOfSuncoast
                     }
 
                 }
-
-
-
-                // write transaction to file
             }
         }
     }
