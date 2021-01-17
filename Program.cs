@@ -148,12 +148,7 @@ namespace FirstBankOfSuncoast
                         };
                         transactions.Add(newtransaction);
                     }
-                    else
-                    {
-                        Console.WriteLine("Insufficient Funds");
-
-                    }
-                    if (newAccount == "savings" && newAmount < savingsAccountBalance)
+                    else if (newAccount == "savings" && newAmount < savingsAccountBalance)
                     {
                         var newtransaction = new Transaction()
                         {
